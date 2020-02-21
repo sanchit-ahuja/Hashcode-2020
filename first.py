@@ -15,14 +15,36 @@ def readfile(filename):
 
 
 def sol_a(library_dict):
-    sorted_dict = {k: v for k, v in sorted(library_dict.items(), key=lambda item: item[1][0])}
-    return sorted_dict
+    # sorted_dict = {k: v for k, v in sorted(library_dict.items(), key=lambda item: item[1][0])}
+    sorted_dict = sorted(library_dict.items(),key = lambda x: x[1][0])
+    # print(sorted_dict[i][0])
+    libraries = []
+    # libraries = [i[0] for i in sorted_dict]
+    # days  = [i[1][0] for i in sorted_dict]
+    # print(libraries)
+    total = 0
+    for i in sorted_dict:
+        total += i[1][0]
+        if total >= 1000:
+            break
+        libraries.append(i[0])
+    # str_x = ' '.join(str(library_dict[0][1]))
+    # print(str_x)
+    with open("ans.txt",'w') as f:
+        f.write('90' + '\n')
+        # f.write(libraries_str)
+        for i in libraries:
+            # print((library_dict[i][1]))
+            f.write(str(i) + ' '+ str(len(library_dict[i][1]))+ '\n')
+            temp_arr_2 = [str(j) for j in library_dict[i][1]]
+            temp_str = ' '.join(temp_arr_2)
+            f.write(temp_str + '\n')
 
 
 if __name__ == "__main__":
     library_dict = readfile("b_read_on.txt")
     f = sol_a(library_dict)
-    print((f[1]))
+    # print((f[1]))
 
 
 
