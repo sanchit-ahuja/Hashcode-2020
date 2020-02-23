@@ -30,7 +30,7 @@ int main () {
     while (file>>a) {
         file>>b;
         file>>c;
-        p = make_pair((double)(a*c)/(double)(b), vector<vector<int> >(2, vector<int>(0,0)));
+        p = make_pair((double)(pow(a,0.5)*c)/(double)(b), vector<vector<int> >(2, vector<int>(0,0)));
         p.second[0].push_back(a);
         p.second[0].push_back(b);
         p.second[0].push_back(c);

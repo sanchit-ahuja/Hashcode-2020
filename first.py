@@ -10,7 +10,7 @@ def readfile(filename):
             c = temp_arr[1]
             val_books = [int(i) for i in data[2*i+1].split()]
             library_dict[i-1] = [c,val_books]
-    # print((library_dict)[2])
+    # print((library_dict))
     return library_dict 
 
 
@@ -28,8 +28,6 @@ def sol_a(library_dict):
         if total >= 1000:
             break
         libraries.append(i[0])
-    # str_x = ' '.join(str(library_dict[0][1]))
-    # print(str_x)
     with open("ans.txt",'w') as f:
         f.write('90' + '\n')
         # f.write(libraries_str)
@@ -41,11 +39,40 @@ def sol_a(library_dict):
             f.write(temp_str + '\n')
 
 
-if __name__ == "__main__":
-    library_dict = readfile("b_read_on.txt")
-    f = sol_a(library_dict)
-    # print((f[1]))
+def sol_b(library_dict):
+    data_book = {}
+    val_arrs = []
+    with open('c_incunabula.txt') as f:
+        data = f.readlines()
+        # val_arrs = [int(i) for i in data[0].split()]
+        temp_arr = [int(i) for i in data[1].split()]
+        for i in range(len(temp_arr)):
+            data_book[i] = temp_arr[i]
+    # B,L,D = val_arrs
+    library_dict = readfile('c_incunabula.txt')
+    score_save = {}
+    for i in range(len(library_dict)):
+        temp_val = library_dict[i][1]
+        total = 0
+        for j in temp_val:
+            total += data_book[j]
+        score_save[i] = [(total)**4/((library_dict[i][0]))**5]
+    sorted_dict = sorted(score_save.items(),key = lambda x: x[1],reverse = True)
+    sorted_dict = OrderedDict(sorted_dict)
+    # print(type(sorted_dict))
+    total_days = 0
+    with open('ans2.txt','w') as f:
+        f.write('10000'+ '\n')
+        for key,val in sorted_dict.items():
+            f.write(str(key) + ' ' + str(len(library_dict[key][1]))+ '\n')
+            temp_arr_2 = [str(j) for j in library_dict[key][1]]
+            temp_str = ' '.join(temp_arr_2)
+            f.write(temp_str + '\n')
+    
 
+if __name__ == "__main__":
+    library_dict = readfile("c_incunabula.txt")
+    score_save = sol_b(library_dict)
 
 
     
