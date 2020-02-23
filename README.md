@@ -9,4 +9,4 @@ This repository contains our team Rand0mCoders implementation of Hashcode 2020 p
 
 The solution for B and C input files have been implemented in Python and for E and F in C++.
 
-This was our first attempt at HashCode. We were able to bag an international rank of 1161 out of 8000 teams and a rank of 121 at national level.
+This was our first attempt at HashCode. We were able to bag an international rank of 1161 out of 10000+ teams and a rank of 121 in India amongst 3000+ teams.
